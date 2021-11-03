@@ -19,17 +19,12 @@ namespace ReLink {
             // Display tray icon in upper-right-hand corner of the screen
             var sItem = NSStatusBar.SystemStatusBar.CreateStatusItem(30);
             sItem.Menu = notifyMenu;
-            sItem.Image = NSImage.FromStream(System.IO.File.OpenRead(NSBundle.MainBundle.ResourcePath + @"/app_icon.png"));
+            sItem.Image =  NSImage.FromStream(System.IO.File.OpenRead(NSBundle.MainBundle.ResourcePath + @"/app_icon.png"));
             sItem.HighlightMode = false;
 
             // Remove the system tray icon from upper-right hand corner of the screen
             // (works without adjusting the LSUIElement setting in Info.plist)
             NSApplication.SharedApplication.ActivationPolicy = NSApplicationActivationPolicy.Accessory;
-        }
-
-        public override void WillTerminate(NSNotification notification)
-        {
-            // Insert code here to tear down your application
         }
 
         [Export("application:openURLs:")]
@@ -44,5 +39,10 @@ namespace ReLink {
         private void HandleUrl(string url) {
             BrowserManager.LaunchUrl(url);
         }
+
+        public override void WillTerminate(NSNotification notification) {
+            // Insert code here to tear down your application
+        }
+
     }
 }
