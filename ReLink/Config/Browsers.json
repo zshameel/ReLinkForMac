@@ -1,0 +1,32 @@
+﻿[
+  {
+    "Name": "Safari",
+    "BundleId": "com.apple.Safari",
+    "ExePath": "/Applications/Safari.app/Contents/MacOS/Safari",
+    "Icon": null
+  },
+  {
+    "Name": "Firefox",
+    "BundleId": "org.mozilla.firefox",
+    "ExePath": "/Applications/Firefox.app/Contents/MacOS/firefox",
+    "Icon": null
+  },
+  {
+    "Name": "Chrome",
+    "BundleId": "com.google.Chrome",
+    "ExePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "Icon": null
+  },
+  {
+    "Name": "Edge",
+    "BundleId": "com.microsoft.edgemac",
+    "ExePath": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edgeu",
+    "Icon": null
+  },
+  {
+    "Name": "Brave",
+    "BundleId": "com.brave.Browser",
+    "ExePath": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+    "Icon": null
+  }
+]
