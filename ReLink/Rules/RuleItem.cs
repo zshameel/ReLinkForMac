@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace ReLink {
 
-    class Rule : IEquatable<Rule>, IComparable<Rule> {
+    public class RuleItem : IEquatable<RuleItem>, IComparable<RuleItem> {
 
-        internal int RuleId { get; set; }
-        internal MatchType MatchType { get; set; }
-        internal string Url { get; set; }
-        internal string BrowserName { get; set; }
+        public int RuleId { get; set; }
+        public MatchType MatchType { get; set; }
+        public string Url { get; set; }
+        public string BrowserName { get; set; }
 
         internal bool IsMatch(string matchUrl) {
             switch (MatchType) {
@@ -39,12 +39,12 @@ namespace ReLink {
             return string.Format("RuleId={0}|MatchType={1}|Url={2}|BrowserName={3}", RuleId, MatchType, Url, BrowserName);
         }
 
-        public static Rule Parse(string ruleString) {
+        public static RuleItem Parse(string ruleString) {
             if (string.IsNullOrWhiteSpace(ruleString)) {
                 return null;
             }
 
-            Rule rule = new Rule();
+            RuleItem rule = new RuleItem();
             string[] parts = ruleString.Split('|');
             foreach (string part in parts) {
                 int index = part.IndexOf('=');
@@ -73,7 +73,7 @@ namespace ReLink {
             if (obj == null) {
                 return false;
             }
-            Rule rule = obj as Rule;
+            RuleItem rule = obj as RuleItem;
             if (rule == null) {
                 return false;
             } else {
@@ -81,7 +81,7 @@ namespace ReLink {
             }
         }
 
-        public bool Equals(Rule other) {
+        public bool Equals(RuleItem other) {
             if (other == null) {
                 return false;
             }
@@ -89,7 +89,7 @@ namespace ReLink {
         }
 
         // Default comparer for Rule type.
-        public int CompareTo(Rule compareRule) {
+        public int CompareTo(RuleItem compareRule) {
             // A null value means that this object is greater.
             if (compareRule == null) {
                 return 1;

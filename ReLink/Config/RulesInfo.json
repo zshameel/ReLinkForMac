@@ -1,0 +1,48 @@
+﻿{
+  "FallbackBrowserName": "Safari",
+  "UseFallbackBrowserForAllLinks": false,
+  "Rules": [
+    {
+      "RuleId": 1,
+      "MatchType": 0,
+      "Url": "https://google.com",
+      "BrowserName": "Chrome"
+    },
+    {
+      "RuleId": 2,
+      "MatchType": 0,
+      "Url": "https://github.com",
+      "BrowserName": "Firefox"
+    },
+    {
+      "RuleId": 3,
+      "MatchType": 0,
+      "Url": "http://shameel.net",
+      "BrowserName": "Brave"
+    },
+    {
+      "RuleId": 4,
+      "MatchType": 0,
+      "Url": "https://amazon.com",
+      "BrowserName": "Safari"
+    },
+    {
+      "RuleId": 5,
+      "MatchType": 0,
+      "Url": "https://microsoft.com",
+      "BrowserName": "Edge"
+    },
+    {
+      "RuleId": 6,
+      "MatchType": 0,
+      "Url": ".hdfcsec.com",
+      "BrowserName": "Firefox"
+    },
+    {
+      "RuleId": 7,
+      "MatchType": 0,
+      "Url": "https://ndtv.com",
+      "BrowserName": "Edge"
+    }
+  ]
+}
