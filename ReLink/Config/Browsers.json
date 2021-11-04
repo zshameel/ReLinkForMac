@@ -20,7 +20,7 @@
   {
     "Name": "Edge",
     "BundleId": "com.microsoft.edgemac",
-    "ExePath": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edgeu",
+    "ExePath": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
     "Icon": null
   },
   {

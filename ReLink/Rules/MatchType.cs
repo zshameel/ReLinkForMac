@@ -4,7 +4,7 @@ Copyright (c) Shameel Ahmed.  All rights reserved.
 
 namespace ReLink
 {
-    internal enum MatchType {
+    public enum MatchType {
         Contains,
         StartsWith,
         ExactMatch,

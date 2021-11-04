@@ -92,18 +92,17 @@
     <Compile Include="Browser\BrowserManager.cs" />
     <Compile Include="Rules\MatchType.cs" />
     <Compile Include="Rules\Wildcard.cs" />
-    <Compile Include="Rules\Rule.cs" />
-    <Compile Include="Settings\BrowserSettings.cs" />
+    <Compile Include="Rules\RuleItem.cs" />
     <Compile Include="DataSource\GenericDataSource.cs" />
-    <Compile Include="Rules\RulesManager.cs" />
+    <Compile Include="Rules\RuleInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Config\ReLink.json" />
     <BundleResource Include="Resources\app_icon.png" />
     <BundleResource Include="Config\Browsers.json" />
+    <BundleResource Include="Config\RulesInfo.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>
