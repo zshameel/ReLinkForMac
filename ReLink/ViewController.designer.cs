@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Visual Studio to store outlets and
 // actions made in the UI designer. If it is removed, they will be lost.
@@ -13,32 +13,93 @@ namespace ReLink
 	partial class ViewController
 	{
 		[Outlet]
-		AppKit.NSComboBox cboBrowsers { get; set; }
+		AppKit.NSButton AddRuleButton { get; set; }
 
 		[Outlet]
-		AppKit.NSComboBox cboSites { get; set; }
+		AppKit.NSComboBox BrowserComboBox { get; set; }
 
 		[Outlet]
-		AppKit.NSTextField lblSelected { get; set; }
+		AppKit.NSButton DeleteRuleButton { get; set; }
 
-		[Action ("btnOKClicked:")]
-		partial void btnOKClicked (Foundation.NSObject sender);
+		[Outlet]
+		AppKit.NSComboBox FallbackBrowserComboBox { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox MatchTypeComboBox { get; set; }
+
+		[Outlet]
+		AppKit.NSButton MoveRuleDownButton { get; set; }
+
+		[Outlet]
+		AppKit.NSButton MoveRuleUpButton { get; set; }
+
+		[Outlet]
+		AppKit.NSScrollView RuleListScrollView { get; set; }
+
+		[Outlet]
+		AppKit.NSTableView RuleListTableView { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField UrlTextField { get; set; }
+
+		[Outlet]
+		AppKit.NSButton UseFallbackBrowserForAllUrlsCheckBox { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (cboBrowsers != null) {
-				cboBrowsers.Dispose ();
-				cboBrowsers = null;
+			if (AddRuleButton != null) {
+				AddRuleButton.Dispose ();
+				AddRuleButton = null;
 			}
 
-			if (cboSites != null) {
-				cboSites.Dispose ();
-				cboSites = null;
+			if (BrowserComboBox != null) {
+				BrowserComboBox.Dispose ();
+				BrowserComboBox = null;
 			}
 
-			if (lblSelected != null) {
-				lblSelected.Dispose ();
-				lblSelected = null;
+			if (DeleteRuleButton != null) {
+				DeleteRuleButton.Dispose ();
+				DeleteRuleButton = null;
+			}
+
+			if (FallbackBrowserComboBox != null) {
+				FallbackBrowserComboBox.Dispose ();
+				FallbackBrowserComboBox = null;
+			}
+
+			if (MatchTypeComboBox != null) {
+				MatchTypeComboBox.Dispose ();
+				MatchTypeComboBox = null;
+			}
+
+			if (MoveRuleDownButton != null) {
+				MoveRuleDownButton.Dispose ();
+				MoveRuleDownButton = null;
+			}
+
+			if (MoveRuleUpButton != null) {
+				MoveRuleUpButton.Dispose ();
+				MoveRuleUpButton = null;
+			}
+
+			if (RuleListScrollView != null) {
+				RuleListScrollView.Dispose ();
+				RuleListScrollView = null;
+			}
+
+			if (UrlTextField != null) {
+				UrlTextField.Dispose ();
+				UrlTextField = null;
+			}
+
+			if (RuleListTableView != null) {
+				RuleListTableView.Dispose ();
+				RuleListTableView = null;
+			}
+
+			if (UseFallbackBrowserForAllUrlsCheckBox != null) {
+				UseFallbackBrowserForAllUrlsCheckBox.Dispose ();
+				UseFallbackBrowserForAllUrlsCheckBox = null;
 			}
 		}
 	}

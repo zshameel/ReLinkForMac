@@ -13,8 +13,8 @@ namespace ReLink {
 
         public static RuleInfo GetInstance() {
             var content = string.Empty;
-
-            using (var textStreamReader = File.OpenText(NSBundle.MainBundle.ResourcePath + @"/Config/RulesInfo.json")) {
+            
+            using (StreamReader textStreamReader = File.OpenText(GetRuleFilePath())) {
                 content = textStreamReader.ReadToEnd();
             }
 
@@ -22,6 +22,22 @@ namespace ReLink {
             return ruleInfo;
         }
 
+        private static string GetRuleFilePath() {
+            string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string reLinkProfile = Path.Combine(userProfile, @"Library/ReLink");
+            if (!Directory.Exists(reLinkProfile)) {
+                Directory.CreateDirectory(reLinkProfile);
+            }
+
+            //If Rule file doesn't exist, create one using the stock file from config folder
+            string ruleFilePath = Path.Combine(reLinkProfile, "RulesInfo.json");
+            if (!File.Exists(ruleFilePath)) {
+                string stockRuleFilePath = NSBundle.MainBundle.ResourcePath + @"/Config/RulesInfo.json";
+                File.Copy(stockRuleFilePath, ruleFilePath);
+            }
+
+            return ruleFilePath;
+        }
     }
 
 }

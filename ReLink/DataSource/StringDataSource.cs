@@ -4,10 +4,10 @@ using AppKit;
 using Foundation;
 
 namespace ReLink {
-    public class GenericDataSource : NSComboBoxDataSource {
+    public class StringDataSource : NSComboBoxDataSource {
         readonly List<string> source;
 
-        public GenericDataSource(List<string> source) {
+        public StringDataSource(List<string> source) {
             this.source = source;
         }
 

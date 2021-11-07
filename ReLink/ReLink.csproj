@@ -93,8 +93,9 @@
     <Compile Include="Rules\MatchType.cs" />
     <Compile Include="Rules\Wildcard.cs" />
     <Compile Include="Rules\RuleItem.cs" />
-    <Compile Include="DataSource\GenericDataSource.cs" />
     <Compile Include="Rules\RuleInfo.cs" />
+    <Compile Include="DataSource\StringDataSource.cs" />
+    <Compile Include="DataSource\RuleDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

@@ -16,39 +16,51 @@ namespace ReLink {
                 
             }
 
-            // Do any additional setup after loading the view.
-            lblSelected.StringValue = string.Empty;
-            LoadBrowsers();
-            LoadSites();
+            InitBrowsers();
+            InitMatchTypes();
+            InitRuleTable();
+
+            InitSites();
         }
 
-        private void LoadBrowsers() {
+        private void InitRuleTable() {
+            RuleDataSource ruleDataSource = new RuleDataSource(RuleInfo.GetInstance().Rules);
+
+            RuleListTableView.DataSource = ruleDataSource;
+
+        }
+
+        private void InitMatchTypes() {
+            List<string> matchTypes = new List<string>() { "Contains", "StartsWith", "ExactMatch", "Wildcard", "Regex" };
+            StringDataSource matchTypesDataSource = new StringDataSource(matchTypes);
+
+            MatchTypeComboBox.UsesDataSource = true;
+            MatchTypeComboBox.DataSource = matchTypesDataSource;
+            MatchTypeComboBox.SelectItem(0);
+        }
+
+        private void InitBrowsers() {
             //LSCopyAllHandlersForURLScheme();
             List<string> browserList = new List<string>();
             foreach (BrowserInfo browser in BrowserManager.Browsers) {
                 browserList.Add(browser.Name);
             }
 
-            cboBrowsers.UsesDataSource = true;
-            cboBrowsers.DataSource = new GenericDataSource(browserList);
-            cboBrowsers.SelectItem(0);
+            StringDataSource browserListDataSource = new StringDataSource(browserList);
+
+            BrowserComboBox.UsesDataSource = true;
+            BrowserComboBox.DataSource = browserListDataSource;
+            BrowserComboBox.SelectItem(0);
+
+            FallbackBrowserComboBox.UsesDataSource = true;
+            FallbackBrowserComboBox.DataSource = browserListDataSource;
+            FallbackBrowserComboBox.SelectItem(0);
         }
 
-        private void LoadSites() {
+        private void InitSites() {
             List<string> siteList = new List<string>() { "https://google.com", "https://github.com", "http://shameel.net", "https://amazon.com", "https://microsoft.com" };
  
-            cboSites.UsesDataSource = true;
-            cboSites.DataSource = new GenericDataSource(siteList);
-            cboSites.SelectItem(0);
         }
 
-        partial void btnOKClicked(NSObject sender) {
-            lblSelected.StringValue = cboBrowsers.DataSource.ObjectValueForItem(cboBrowsers, cboBrowsers.SelectedIndex).ToString();
-
-            BrowserInfo browser = BrowserManager.GetBrowserByName(lblSelected.StringValue);
-            string url = cboSites.DataSource.ObjectValueForItem(cboSites, cboSites.SelectedIndex).ToString();
-
-            BrowserManager.LaunchUrl(url);
-        }
     }
 }
