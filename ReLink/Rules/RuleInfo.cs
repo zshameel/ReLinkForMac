@@ -14,7 +14,7 @@ namespace ReLink {
         public static RuleInfo GetInstance() {
             var content = string.Empty;
             
-            using (StreamReader textStreamReader = File.OpenText(GetRuleFilePath())) {
+            using (StreamReader textStreamReader = File.OpenText(GetRuleFilePath(true))) {
                 content = textStreamReader.ReadToEnd();
             }
 
@@ -22,7 +22,7 @@ namespace ReLink {
             return ruleInfo;
         }
 
-        private static string GetRuleFilePath() {
+        private static string GetRuleFilePath(bool create) {
             string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string reLinkProfile = Path.Combine(userProfile, @"Library/ReLink");
             if (!Directory.Exists(reLinkProfile)) {
@@ -31,12 +31,18 @@ namespace ReLink {
 
             //If Rule file doesn't exist, create one using the stock file from config folder
             string ruleFilePath = Path.Combine(reLinkProfile, "RulesInfo.json");
-            if (!File.Exists(ruleFilePath)) {
+
+            if (create && !File.Exists(ruleFilePath)) {
                 string stockRuleFilePath = NSBundle.MainBundle.ResourcePath + @"/Config/RulesInfo.json";
                 File.Copy(stockRuleFilePath, ruleFilePath);
             }
 
             return ruleFilePath;
+        }
+
+        internal void SaveRules() {
+            string stringRuleInfo = JsonConvert.SerializeObject(this);
+            File.WriteAllText(GetRuleFilePath(false), stringRuleInfo);
         }
     }
 

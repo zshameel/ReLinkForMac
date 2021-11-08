@@ -7,27 +7,50 @@ using ReLink;
 
 namespace ReLink {
     public partial class ViewController : NSViewController {
+
+        RuleInfo _ruleInfo;
+
         public ViewController(IntPtr handle) : base(handle) {
         }
 
         public override void ViewDidLoad() {
             base.ViewDidLoad();
             if (MainClass.NoUI) {
-                
+
             }
+
+            _ruleInfo = RuleInfo.GetInstance();
 
             InitBrowsers();
             InitMatchTypes();
             InitRuleTable();
+            InitControls();
+        }
 
-            InitSites();
+        private void InitControls() {
+            FallbackBrowserComboBox.ToolTip = "The Browser to use when no Rule match the url";
+            BrowserComboBox.ToolTip = "Select the Browser to use with the Rule";
+            UrlTextField.ToolTip = "Enter the url or url pattern here";
+            MatchTypeComboBox.ToolTip = "Select the Url Match type";
+            UseFallbackBrowserForAllUrlsCheckBox.ToolTip = "Check this to bypass rules and open all urls with the Fallback Browser";
+            AddRuleButton.ToolTip = "Add Rule";
+            DeleteRuleButton.ToolTip = "Delete selected Rule";
+            MoveRuleUpButton.ToolTip = "Move selected Rule up";
+            MoveRuleDownButton.ToolTip = "Move selected Rule down";
         }
 
         private void InitRuleTable() {
-            RuleDataSource ruleDataSource = new RuleDataSource(RuleInfo.GetInstance().Rules);
+            RuleDataSource ruleDataSource = new RuleDataSource(_ruleInfo.Rules);
 
             RuleListTableView.DataSource = ruleDataSource;
 
+            if (RuleListTableView.RowCount > 0) {
+                RuleListTableView.SelectRow(0, false);
+            }
+        }
+
+        private void SaveRules() {
+            _ruleInfo.SaveRules();
         }
 
         private void InitMatchTypes() {
@@ -57,9 +80,29 @@ namespace ReLink {
             FallbackBrowserComboBox.SelectItem(0);
         }
 
-        private void InitSites() {
-            List<string> siteList = new List<string>() { "https://google.com", "https://github.com", "http://shameel.net", "https://amazon.com", "https://microsoft.com" };
- 
+        partial void AddButtonClicked(Foundation.NSObject sender) {
+            RuleItem rule = _ruleInfo.Rules.Find(r => r.Url.Equals(UrlTextField.StringValue, StringComparison.OrdinalIgnoreCase));
+            nint selectedRow = 0;
+
+            if (rule == null) {
+                _ruleInfo.Rules.Add(new RuleItem() {
+                    MatchType = Enum.Parse<MatchType>(MatchTypeComboBox.StringValue),
+                    RuleId = _ruleInfo.Rules.Count + 1,
+                    Url = UrlTextField.StringValue,
+                    BrowserName = BrowserComboBox.StringValue
+                });
+                selectedRow = RuleListTableView.RowCount;
+            } else {
+                rule.MatchType = Enum.Parse<MatchType>(MatchTypeComboBox.StringValue);
+                rule.BrowserName = BrowserComboBox.StringValue;
+                selectedRow = rule.RuleId-1;
+            }
+
+            SaveRules();
+            InitRuleTable();
+
+            RuleListTableView.SelectRow(selectedRow, false);
+            RuleListTableView.ScrollRowToVisible(selectedRow);
         }
 
     }
