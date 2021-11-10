@@ -41,6 +41,11 @@ namespace ReLink {
         }
 
         internal void SaveRules() {
+            int ruleId = 0;
+            foreach(RuleItem rule in Rules) {
+                rule.RuleId = ++ruleId;
+            }
+
             string stringRuleInfo = JsonConvert.SerializeObject(this);
             File.WriteAllText(GetRuleFilePath(false), stringRuleInfo);
         }

@@ -205,7 +205,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="RemoveUrlButtonClicked:" target="XfG-lQ-9wD" id="88P-cM-F38"/>
+                                    <action selector="DeleteButtonClicked:" target="XfG-lQ-9wD" id="sGt-2k-1fu"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eml-gN-hCl">

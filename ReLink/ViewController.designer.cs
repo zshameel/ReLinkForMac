@@ -48,15 +48,15 @@ namespace ReLink
 		[Action ("AddButtonClicked:")]
 		partial void AddButtonClicked (Foundation.NSObject sender);
 
+		[Action ("DeleteButtonClicked:")]
+		partial void DeleteButtonClicked (Foundation.NSObject sender);
+
 		[Action ("MoveDownButtonClicked:")]
 		partial void MoveDownButtonClicked (Foundation.NSObject sender);
 
 		[Action ("MoveUpButtonClicked:")]
 		partial void MoveUpButtonClicked (Foundation.NSObject sender);
-
-		[Action ("RemoveButtonClicked:")]
-		partial void RemoveButtonClicked (Foundation.NSObject sender);
-
+		
 		void ReleaseDesignerOutlets ()
 		{
 			if (AddRuleButton != null) {
