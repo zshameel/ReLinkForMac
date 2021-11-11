@@ -25,13 +25,24 @@ namespace ReLink {
 
         static internal void LaunchUrl(string url) {
             try {
+                BrowserInfo browser = GetBrowserForUrl(url);
+
                 NSWorkspace.SharedWorkspace.OpenUrls(
                     new NSUrl[] { new NSUrl(url) },
-                    GetBrowserForUrl(url).BundleId,
+                    browser.BundleId,
                     NSWorkspaceLaunchOptions.Default,
                     new NSAppleEventDescriptor(),
                     new string[0]
                 );
+
+                var notification = new NSUserNotification {
+                    Title = "Re:Link",
+                    InformativeText = $"{url} was opened with {browser.Name}",
+                    SoundName = NSUserNotification.NSUserNotificationDefaultSoundName,
+                    HasActionButton = false
+                };
+                NSUserNotificationCenter.DefaultUserNotificationCenter.DeliverNotification(notification);
+
             } catch(Exception) {
 
             }

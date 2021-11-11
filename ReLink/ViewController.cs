@@ -17,7 +17,7 @@ namespace ReLink {
         public override void ViewDidLoad() {
             base.ViewDidLoad();
             if (MainClass.NoUI) {
-
+                View.Window.Close();
             }
 
             _ruleInfo = RuleInfo.GetInstance();

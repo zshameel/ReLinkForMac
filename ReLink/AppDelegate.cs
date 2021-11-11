@@ -24,7 +24,7 @@ namespace ReLink {
 
             // Remove the system tray icon from upper-right hand corner of the screen
             // (works without adjusting the LSUIElement setting in Info.plist)
-            //NSApplication.SharedApplication.ActivationPolicy = NSApplicationActivationPolicy.Accessory;
+            NSApplication.SharedApplication.ActivationPolicy = NSApplicationActivationPolicy.Accessory;
         }
 
         [Export("application:openURLs:")]
